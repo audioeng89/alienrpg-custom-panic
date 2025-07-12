@@ -1,6 +1,6 @@
 # 📖 AlienRPG Custom Panic for Foundry VTT 
 
-<p>If you want to run homebrew panic rules in the superb <a href='https://github.com/pwatson100/alienrpg' target="_blank" rel="noopener noreferrer">AlienRPG system for Foundry VTT</a>, then this Custom Panic module is everything you'll need.  
+<p>If you want to run homebrew panic rules in the superb <a href='https://github.com/pwatson100/alienrpg' target="_blank" rel="noopener noreferrer">AlienRPG system for Foundry VTT</a>, then this Custom Panic module has everything you'll need.  
 AlienRPG Custom Panic overrides the hard-coded default values, allowing GMs to specify custom panic tables, dice rolls, and even elaborate nested tables.  
 Custom Panic applies to regular Panic and Space Combat Panic rolls, complete with automated stats adjustments using simple text specifiers.</p>
 
@@ -22,7 +22,7 @@ Custom Panic applies to regular Panic and Space Combat Panic rolls, complete wit
 
 ## ⚙️ Custom Panic Configuration
 
-By default, Custom Panic defaults to the built-in AlienRPG Panic Table and Space Combat Panic Roll tables (which are not included!), or you can specify different tables to use.  
+Custom Panic defaults to the built-in AlienRPG Panic Table and Space Combat Panic Roll tables (which are not included!), or you can specify different tables to use.  
 The module includes a heavily nested roll table example in the supplied compendium, [based on this excellent idea](https://forum.frialigan.se/viewtopic.php?t=13311) by Teean.
 
 Configuration settings are found in the **Settings Menu** under **AlienRPG Custom Panic**.  
