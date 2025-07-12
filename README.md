@@ -33,9 +33,7 @@ The module allows you to specify:
 - The roll threshold at which the Panic status effect is applied
 - For regular panic: separate thresholds for Permanent Trauma and Catatonic effects, displaying appropriate text in chat and setting the player to **unconscious**.
 
-<p>
-<img width="452" height="529" alt="Settings example" src="https://github.com/user-attachments/assets/014683ae-abbd-46d8-9645-ff6156882935" />
-</p>
+<img width="600" height="750" alt="Screenshot 2025-07-12 225003" src="https://github.com/user-attachments/assets/d486d475-8afa-44aa-b98d-8a1fe473e842" />
 
 Between all these options, you can configure your roll tables however you like for entirely homebrew Panic Rolls, while still benefiting from the automation of the AlienRPG character sheets.
 
@@ -80,10 +78,9 @@ Use the format:
 
 ### 💡 Example
 
-    <b>Jump scare:</b> You suffer STRESS+2 and all skill checks are rolled with EMPATHY-2 until your panic ends.
+    <b>Jump scare:</b> You suffer STRESS+2 and all skill checks are rolled with EMPATHY-2 but you have CLOSE COMBAT+1 until your panic ends.
 
 This makes it easy to write descriptive effects that also encode the data needed to automatically apply and remove stat changes.
 
-<p>
-<img width="869" height="657" alt="Result example" src="https://github.com/user-attachments/assets/939888f5-b75a-4c55-8b36-648d76c29c12" />
-</p>
+<img width="845" height="569" alt="image" src="https://github.com/user-attachments/assets/79d25619-f8df-479b-b68d-303b7c6a3a78" />
+
