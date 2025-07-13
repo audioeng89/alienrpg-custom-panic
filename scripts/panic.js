@@ -10,7 +10,7 @@ Hooks.once('init', () => {
     // Whether to automatically apply panic stat mods from table results
     game.settings.register(moduleName, "statAutoApply", {
         name: "Auto-apply Panic Stats",
-        hint: "Apply panic table stat mods automatically where text conforms to the standard: capitalized attribute follow immediately by a number modifier. For example: STRESS+2, AGILITY-1, STRENGTH-1, etc.",
+        hint: "Apply panic table stat mods automatically where text conforms to the standard: capitalized attribute followed immediately by a number modifier. For example: STRESS+2, AGILITY-1, STRENGTH-1, etc.",
         scope: "world",
         config: true,
         type: Boolean,
@@ -172,6 +172,14 @@ Hooks.on("ready", function() {
             catThresh = 1000;
         }
 
+        // 1.5 Check table actually exists before we do anything else
+        const table = game.tables.getName(tableName);
+        if (!table) {
+            ui.notifications.error(`Panic table "${tableName}" not found. Check your settings.`);
+            console.error(`AlienRPG Custom Panic | Table "${tableName}" not found.`);
+            return '';
+        }
+
         // 2. Roll the dice
         const roll = await new Roll( dice, actor.getRollData() ).evaluate();
 
@@ -212,12 +220,6 @@ Hooks.on("ready", function() {
         }
         
         // 5. Draw from the panic table
-        const table = game.tables.getName(tableName);
-        if (!table) {
-            ui.notifications.error(`Panic table "${tableName}" not found. Check your settings.`);
-            console.error(`AlienRPG Custom Panic | Table "${tableName}" not found.`);
-            return;
-        }
         const result = await table.draw({ roll: new Roll(`${new_panic}`), displayChat: false });
         const text = result.results[0]?.text ?? "No result";
         foundry.audio.AudioHelper.play({src: CONFIG.sounds.dice}, true);    // play dice sound
@@ -255,9 +257,9 @@ Hooks.on("ready", function() {
                 await actor.toggleStatusEffect('unconscious', { active: true });
             }
 
-            // Create a label for our item. Grab the first <b>…</b> or fall back
-            // Only match a <b>…</b> if it’s at the very start (ignoring leading spaces)
-            // capture up until—but not including—any trailing punctuation before </b>
+            // Create a label for our item. Grab the first <b>â€¦</b> or fall back
+            // Only match a <b>â€¦</b> if itâ€™s at the very start (ignoring leading spaces)
+            // capture up untilâ€”but not includingâ€”any trailing punctuation before </b>
             const boldMatch = text.match(/^\s*<b>([\s\S]*?)[\.,;:!?\-]*<\/b>/i);
 
             // If we got a match, use its contents; otherwise fallback
@@ -323,7 +325,7 @@ Hooks.on("ready", function() {
             blind = true;
         }
 
-        await ChatMessage.create({
+        await ChatMessage.create({  // send chat message
             content: chatContent,
             speaker: ChatMessage.getSpeaker({ actor: actor}),
             whisper,
